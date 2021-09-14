@@ -1,4 +1,6 @@
-function UserDetails({ name, username, email, companyName }) {
+function UserDetails({ user }) {
+  const { name, username, email, company: { companyName } } = user;
+
   return <div class="user-details__component text">
     <div class="text">Name: {name};</div>
     <div class="text">Username: {username};</div>
