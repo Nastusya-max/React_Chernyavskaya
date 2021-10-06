@@ -1,10 +1,10 @@
 import Avatar from './Avatar'
 import UserDetails from './UserDetails'
 
-function UserInfo({ user, avatar }) {
+function UserInfo({ user }) {
   return <div className="user__details">
-    <Avatar avatar={avatar} />
-    <UserDetails  user={user}/>
+    <Avatar />
+    <UserDetails user={user} />
   </div>
 }
 
