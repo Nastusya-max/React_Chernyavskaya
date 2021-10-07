@@ -1,4 +1,5 @@
 import React from "react";
+import Album from "./Album";
 
 class Content extends React.Component {
   constructor(props) {
@@ -9,13 +10,12 @@ class Content extends React.Component {
   componentDidMount = () => {
     fetch('https://jsonplaceholder.typicode.com/albums').then((res) => {
       return res.json();
-    }).then(data => this.setState({ albums: data }))
+    }).then(data => this.setState({ albums: data }));
   }
 
   render() {
     return <div className="user__details">
-      <div className="content__component text">{this.state.albums.map(album => <li key={album.id}>{album.title}</li>)}</div>
-    </div>
+     <ul className='content__component text'>{this.state.albums.map(album => <Album album={album}  key={album.id}/>)}</ul> </div>
   }
 }
 

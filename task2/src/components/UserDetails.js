@@ -1,7 +1,7 @@
 function UserDetails({ user }) {
   const { name, username, email, company: { companyName } } = user;
 
-  return <div className="user-details__component text">
+  return <div className="user-details__component">
     <div className="text">Name: {name};</div>
     <div className="text">Username: {username};</div>
     <div className="text">Email: {email};</div>

@@ -23,16 +23,27 @@
 
 .content__component {
   background-color: #63AA9C;
-  width: 100%;
 }
 
-.user__details {
+.inf-container {
   display:flex;
 }
 
-.text{
+.text {
   padding: 5px;
   display:inline-block;
+}
+
+li {
+  padding: 5px;
+  margin: 10px;
+  background-color: #ECEAE0;
+}
+
+ul {
+  list-style: none;
+	margin: 0px;
+  margin-top: 15px;
 }
 
 img {
