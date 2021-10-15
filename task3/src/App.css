@@ -59,3 +59,29 @@ a {
   text-decoration: none;
   color: #221E1D;
 }
+
+.content-container{
+  width: 100%;
+  text-align: center;
+}
+
+.album-img {
+  width: 90px;
+  padding: 5px;
+}
+
+.img-container {
+  width: 90%;
+  background-color: #7c5ea3;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+button {
+  text-align: right;
+}
+/* .album-img:last-child {
+  margin-left: 0px;
+} */
