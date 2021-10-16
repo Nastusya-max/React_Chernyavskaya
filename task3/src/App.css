@@ -72,16 +72,19 @@ a {
 
 .img-container {
   width: 90%;
-  background-color: #7c5ea3;
-  padding-top: 30px;
   padding-bottom: 20px;
   margin-left: 20px;
   margin-top: 20px;
 }
 
-button {
-  text-align: right;
+.album-container {
+  width: 90%;
+  background-color: #7c5ea3;
+  padding-top: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
-/* .album-img:last-child {
-  margin-left: 0px;
-} */
+
+button {
+  background-color: #ECEAE0;
+}
