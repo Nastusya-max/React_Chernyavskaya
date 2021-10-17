@@ -40,6 +40,10 @@ li {
   background-color: #ECEAE0;
 }
 
+li:hover {
+  cursor: pointer;
+}
+
 ul {
   list-style: none;
 	margin: 0px;
@@ -49,4 +53,38 @@ ul {
 img {
   width: 100%;
   height: 100%
+}
+
+a {
+  text-decoration: none;
+  color: #221E1D;
+}
+
+.content-container{
+  width: 100%;
+  text-align: center;
+}
+
+.album-img {
+  width: 90px;
+  padding: 5px;
+}
+
+.img-container {
+  width: 90%;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.album-container {
+  width: 90%;
+  background-color: #7c5ea3;
+  padding-top: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #ECEAE0;
 }
