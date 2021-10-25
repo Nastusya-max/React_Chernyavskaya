@@ -8,8 +8,8 @@ function Album({ album }) {
   const [photos, setPhotos] = useState([]);
   const [isOpenAlbum, setIsOpenAlbum] = useState(true);
 
-  const albumClickHandler = useCallback((album) => { setActiveAlbum(album); }, []);
-  const closeAlbum = useCallback(() => { setPhotos([]); }, []);
+  const albumClickHandler = useCallback((album) => { setActiveAlbum(album) }, []);
+  const closeAlbum = useCallback(() => { setPhotos([]) }, []);
 
   useEffect(() => {
     if (activeAlbum) {

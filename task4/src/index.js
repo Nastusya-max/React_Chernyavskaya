@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Provider } from "react-redux";
+import store from './store/store';
 
 import user from './constants/user.json'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App user={user} />
+    <Provider store={store}>
+      <App user={user} />
+    </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );
