@@ -66,23 +66,20 @@ a {
 }
 
 .album-img {
-  width: 90px;
+  width: 100px;
   padding: 5px;
 }
 
 .img-container {
-  width: 90%;
+  width: 100%;
   padding-bottom: 20px;
-  margin-left: 20px;
   margin-top: 20px;
 }
 
 .album-container {
-  width: 90%;
   background-color: #7c5ea3;
   padding-top: 20px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 10px;
 }
 
 button {
