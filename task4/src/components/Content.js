@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 import { albumsFetchDataSuccess } from "../store/actionCreators/albums";
+import { photosFetchDataSuccess } from "../store/actionCreators/photos";
 
 function Content() {
 
@@ -17,21 +18,21 @@ function Content() {
     }
   }
 
-  useEffect(() => {
-    dispatch(getAlbums('https://jsonplaceholder.typicode.com/albums'));
-  }, [dispatch]);
-
-  const uhjj = () => {
-    content.fetchAlbums.albums && console.log(content.fetchAlbums.albums)
-      // content.albums.albums.map(album => console.log(album.id))
-    
-    // content.albums && console.log(content.albums)
+  function getPhotos(src) {
+    return dispatch => {
+      axios.get(src)
+        .then(res => dispatch(photosFetchDataSuccess(res.data)));
+    }
   }
 
+  useEffect(() => {
+    dispatch(getAlbums('https://jsonplaceholder.typicode.com/albums'));
+    dispatch(getPhotos('https://jsonplaceholder.typicode.com/photos'));
+  }, [dispatch]);
+
+
   return <div className="user__details">
-    {/* {uhjj()} */}
-    {/* <ul className='content__component text'>{content.albums.length && content.albums[0].map(album => console.log(album))}</ul> */}
-    <ul className='content__component text'>{content.fetchAlbums.albums && <Album album={content.fetchAlbums.albums} />}</ul>
+    <ul className='content__component text'>{content.fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
   </div>
 }
 

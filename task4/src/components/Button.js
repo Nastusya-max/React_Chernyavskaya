@@ -1,17 +1,15 @@
-import { useState, useCallback, useEffect } from "react";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { deleteActiveAlbum } from "../store/actionCreators/albums";
 
-function Button({ album, closeAlbum }) {
-  const [closedAlbum, setClosedAlbum] = useState(null);
-  const [isOpenAlbum, setIsOpenAlbum] = useState(true);
-  const buttonClickHandler = useCallback((album) => { setClosedAlbum(album) }, []);
+function Button({ album }) {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (closedAlbum) {
-      closeAlbum();
-    }
-  }, [closedAlbum, isOpenAlbum, closeAlbum])
+  const buttonClickHandler = useCallback((album) => { dispatch(deleteActiveAlbum(album)) }, [dispatch]);
 
-  return <button onClick={() => { setIsOpenAlbum(!isOpenAlbum); buttonClickHandler(album) }}>{'\u2716'}</button>
+  return <button onClick={() => buttonClickHandler(album)}>
+    {'\u2716'}
+  </button>
 }
 
 export default Button;

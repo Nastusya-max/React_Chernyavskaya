@@ -25,6 +25,7 @@
 
 import { ALBUMS_FETCH_DATA_SUCCESS } from "../actions/albums"
 import { SET_ACTIVE_ALBUM_SUCCESS } from "../actions/albums"
+import { DELETE_ACTIVE_ALBUM_SUCCESS } from "../actions/albums"
 
 export function albumsFetchDataSuccess(albums) {
   return {
@@ -36,6 +37,13 @@ export function albumsFetchDataSuccess(albums) {
 export function setActiveAlbum(activeAlbum) {
   return {
     type: SET_ACTIVE_ALBUM_SUCCESS,
+    payload: activeAlbum
+  }
+}
+
+export function deleteActiveAlbum(activeAlbum) {
+  return {
+    type: DELETE_ACTIVE_ALBUM_SUCCESS,
     payload: activeAlbum
   }
 }

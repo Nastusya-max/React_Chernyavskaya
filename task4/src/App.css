@@ -40,10 +40,6 @@ li {
   background-color: #ECEAE0;
 }
 
-li:hover {
-  cursor: pointer;
-}
-
 ul {
   list-style: none;
 	margin: 0px;
@@ -77,11 +73,14 @@ a {
 }
 
 .album-container {
-  background-color: #7c5ea3;
-  padding-top: 20px;
+  padding-top: 10px;
   margin: 10px;
 }
 
 button {
-  background-color: #ECEAE0;
+  background-color: #ccc4df;
+}
+
+.title-container, button:hover {
+  cursor: pointer;
 }
