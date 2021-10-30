@@ -36,9 +36,9 @@ function Content() {
   return <div className="user__details">
     <AddAlbum />
     {addAlbums.length ?
-      <div><ul className='content__component text'><p>Your albums:</p>{addAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
-      <ul className='content__component text'>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul></div>
-      :<ul className='content__component text'>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
+      <div><ul className='content__component '><p>Your albums:</p>{addAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
+      <ul className='content__component '>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul></div>
+      :<ul className='content__component '>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
     }
   </div>
 }

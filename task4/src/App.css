@@ -6,7 +6,6 @@
 
 .app__container {
   display: inline-block;
-  text-align: left;
   padding: 10px;
   background-color: #E9633B;
   width: 35%;
@@ -17,6 +16,7 @@
 }
 
 .user-details__component {
+  text-align: left;
   background-color: #ECEAE0;
   width: 60%;
 }
@@ -30,20 +30,20 @@
 }
 
 .text {
-  padding: 5px;
   display:inline-block;
+  padding: 5px;
 }
 
 li {
-  padding: 5px;
-  margin: 10px;
+  padding: 10px;
+  margin: 12px;
   background-color: #ECEAE0;
 }
 
 ul {
   list-style: none;
-	margin: 0px;
-  margin-top: 15px;
+  padding-left: 0;
+  padding: 8px;
 }
 
 img {
@@ -78,9 +78,28 @@ a {
 }
 
 button {
-  background-color: #ccc4df;
+  border-color: #a6b2cc;
+  color: #221E1D;
+  padding: 8px 18px;
+  font-size: 16px;
+  margin: 0px 7px;
+  background-color: #ECEAE0;
+}
+
+.close-button {
+  padding: 5px 10px;
 }
 
 .title-container, button:hover {
   cursor: pointer;
+}
+p {
+  font-size: 24px;
+  color: #ECEAE0;
+  margin: 0;
+  padding: 0;
+}
+
+.addAlbum-container {
+  margin-top: 15px;
 }

@@ -6,7 +6,7 @@ function Button({ album }) {
   const dispatch = useDispatch();
   const buttonClickHandler = useCallback((album) => { dispatch(deleteActiveAlbum(album)) }, [dispatch]);
 
-  return <button onClick={() => buttonClickHandler(album)}>
+  return <button className='close-button' onClick={() => buttonClickHandler(album)}>
     {'\u2716'}
   </button>
 }
