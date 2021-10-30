@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Album from "./Album";
+import AddAlbum from "./AddAlbum";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
@@ -8,7 +9,8 @@ import { photosFetchDataSuccess } from "../store/actionCreators/photos";
 
 function Content() {
 
-  const content = useSelector(state => state);
+  const addAlbums = useSelector(({ addAlbums }) => addAlbums);
+  const fetchAlbums = useSelector(({ fetchAlbums }) => fetchAlbums);
   const dispatch = useDispatch();
 
   function getAlbums(src) {
@@ -32,7 +34,12 @@ function Content() {
 
 
   return <div className="user__details">
-    <ul className='content__component text'>{content.fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
+    <AddAlbum />
+    {addAlbums.length ?
+      <div><ul className='content__component text'><p>Your albums:</p>{addAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
+      <ul className='content__component text'>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul></div>
+      :<ul className='content__component text'>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
+    }
   </div>
 }
 

@@ -5,12 +5,10 @@ import App from './App';
 import { Provider } from "react-redux";
 import store from './store/store';
 
-import user from './constants/user.json'
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App user={user} />
+      <App />
     </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
