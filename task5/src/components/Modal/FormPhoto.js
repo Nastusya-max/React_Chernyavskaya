@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "./Modal";
 
@@ -6,7 +5,6 @@ import { addNewPhotos } from '../../store/actionCreators/photos'
 import { useDispatch, useSelector } from "react-redux";
 
 function FormPhoto({ active, setActive }) {
-  const content = useSelector(state => state);
   const addPhotos = useSelector(({ addPhotos }) => addPhotos);
   const fetchPhotos = useSelector(({ fetchPhotos }) => fetchPhotos);
   const dispatch = useDispatch();
@@ -21,7 +19,6 @@ function FormPhoto({ active, setActive }) {
     }
     dispatch(addNewPhotos(data))
   };
-
 
   return <div>
     <Modal active={active} setActive={setActive}>

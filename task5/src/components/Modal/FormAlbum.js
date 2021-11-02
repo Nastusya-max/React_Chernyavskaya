@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "./Modal";
 
@@ -21,7 +20,6 @@ function FormAlbum({ active, setActive }) {
     }
     dispatch(addNewAlbums(data))
   };
-
 
   return <div>
     <Modal active={active} setActive={setActive}>

@@ -6,21 +6,25 @@ import { useDispatch } from "react-redux";
 
 import user from './constants/user.json'
 import { addUser } from './store/actionCreators/user';
+import ScrollButton from './components/scrollButton/ScrollButton';
 
 function App() {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(addUser(user));
   }, [dispatch]);
 
   return (
-    <div className="app">
-      <div className="app__container">
-        <UserInfo user={user} />
-        <Content />
+    <>
+      <div className="app">
+        <div className="app__container">
+          <UserInfo user={user} />
+          <Content />
+        </div>
       </div>
-    </div>
+      <ScrollButton />
+    </>
   );
 }
 
