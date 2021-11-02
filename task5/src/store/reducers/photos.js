@@ -13,7 +13,7 @@ export function fetchPhotos(state = [], action) {
 export function addPhotos(state = [], action) {
   switch (action.type) {
     case ADD_PHOTOS_TYPE:
-      return action.payload;
+      return [...state, action.payload];
     default:
       return state;
   }

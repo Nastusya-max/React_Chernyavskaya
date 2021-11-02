@@ -33,7 +33,7 @@ function Album({ album }) {
           <div className='img-container'>
             {addAlbums.filter(item => item.id === album.id).length ? 
             addPhotos.length ?
-            addPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
+            addPhotos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
             : 'Please, add a photo to the album'
             : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
           </div>

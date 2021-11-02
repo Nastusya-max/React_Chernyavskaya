@@ -8,7 +8,7 @@ export function photosFetchDataSuccess(photos) {
   }
 }
 
-export function addPhotos(photos) {
+export function addNewPhotos(photos) {
   return {
     type: ADD_PHOTOS_TYPE,
     payload: photos

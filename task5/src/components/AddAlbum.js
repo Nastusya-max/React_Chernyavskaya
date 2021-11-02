@@ -7,21 +7,22 @@ import { addPhotos } from "../store/actionCreators/photos";
 import photos from '../constants/photos.json';
 
 import React, { useState } from "react";
-import Form from "./Modal/Form";
+import FormAlbum from "./Modal/FormAlbum";
+import FormPhoto from "./Modal/FormPhoto";
 
 
 function AddAlbum() {
   const dispatch = useDispatch();
-  const [modalActive, setModalActive] = useState(false)
+  const [formAlbumActive, setformAlbumActive] = useState(false)
+  const [formPhotoActive, setformPhotoActive] = useState(false)
 
-  // const addAlbumHandler = useCallback(() => { dispatch(addNewAlbums(albums)) }, [dispatch]);
-  const addPhotoHandler = useCallback(() => { dispatch(addPhotos(photos)) }, [dispatch]);
+  // const addPhotoHandler = useCallback(() => { dispatch(addPhotos(photos)) }, [dispatch]);
 
   return <div className='addAlbum-container'>
-    {/* <button onClick={() => addAlbumHandler()}>Add album</button> */}
-    <button onClick={() => setModalActive(true)}>Add album</button>
-    <button onClick={() => addPhotoHandler()}>Add photo</button>
-    <Form  active={modalActive} setActive={setModalActive}/>
+    <button onClick={() => setformAlbumActive(true)}>Add album</button>
+    <button onClick={() => setformPhotoActive(true)}>Add photo</button>
+    <FormAlbum  active={formAlbumActive} setActive={setformAlbumActive}/>
+    <FormPhoto  active={formPhotoActive} setActive={setformPhotoActive}/>
   </div>
 }
 
