@@ -9,7 +9,7 @@ import { addUser } from './store/actionCreators/user';
 
 function App() {
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(addUser(user));
   }, [dispatch]);

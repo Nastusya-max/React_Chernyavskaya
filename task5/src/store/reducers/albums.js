@@ -26,7 +26,7 @@ export function activeAlbums(state = [], action) {
 export function addAlbums(state = [], action) {
   switch (action.type) {
     case ADD_ALBUMS_TYPE:
-      return action.payload;
+      return [...state, action.payload];
     default:
       return state;
   }
