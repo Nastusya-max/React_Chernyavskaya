@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import FormAlbum from "./Modal/FormAlbum";
-import FormPhoto from "./Modal/FormPhoto";
-
 
 function AddAlbum() {
-  const [formAlbumActive, setformAlbumActive] = useState(false)
-  const [formPhotoActive, setformPhotoActive] = useState(false)
-
+  const [formActive, setformActive] = useState(false);
+  const [dataType, setDataType] = useState(null);
 
   return <div className='addAlbum-container'>
-    <button onClick={() => setformAlbumActive(true)}>Add album</button>
-    <button onClick={() => setformPhotoActive(true)}>Add photo</button>
-    <FormAlbum  active={formAlbumActive} setActive={setformAlbumActive}/>
-    <FormPhoto  active={formPhotoActive} setActive={setformPhotoActive}/>
+    <button onClick={() => {setformActive(true); setDataType('album')}}>Add album</button>
+    <button onClick={() => {setformActive(true); setDataType('photo')}}>Add photo</button>
+    <FormAlbum  active={formActive} setActive={setformActive} dataType={dataType}/>
   </div>
 }
 

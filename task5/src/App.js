@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 import user from './constants/user.json'
 import { addUser } from './store/actionCreators/user';
-import ScrollButton from './components/scrollButton/ScrollButton';
+import ScrollButton from './components/ScrollButton/ScrollButton';
 
 function App() {
   const dispatch = useDispatch();
