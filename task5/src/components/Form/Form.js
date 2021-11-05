@@ -2,7 +2,7 @@ import './form.css';
 import { useForm } from "react-hook-form";
 import Modal from "../Modal/Modal";
 import { useContext } from 'react';
-import dataTypeContext from '../../context/dataTypeContext';
+import dataTypeContext from '../context/dataTypeContext';
 
 import { addNewAlbums } from '../../store/actionCreators/albums';
 import { addNewPhotos } from '../../store/actionCreators/photos';
@@ -55,23 +55,23 @@ function Form({ active, setActive }) {
   return <div>
     <Modal active={active} setActive={setActive}>
       {useContext(dataTypeContext) === 'album' ?
-        <>
+        <div className='form-container'>
           <form onSubmit={handleSubmit(onSubmitAlbum)}>
-            <label id='title-label' htmlFor="title">Enter the title of the album (required)</label>
-            <input id='title' {...register("title")} placeholder="Title" required></input>
-            <button type="submit">Add album</button>
+            <label id='title-label' htmlFor="title">Enter the title of the album (required)</label><br/>
+            <input id='title' {...register("title")} placeholder="Title" required></input><br/>
+            <button className='submit-btn' type="submit">Add album</button>
           </form>
-        </>
+        </div>
         :
-        <>
+        <div className='form-container'>
           <form onSubmit={handleSubmit(onSubmitPhoto)}>
-            <input id='albumTitle' {...register("albumTitle")} placeholder="album title" required></input>
-            <label id='albumTitle-label' htmlFor="albumTitle">Enter the title of the album (required)</label>
-            <input id='url' {...register("url")} placeholder="url" required></input>
-            <label id='url-label' htmlFor="url">Enter the url of the photo (required)</label>
-            <button type="submit">Add photo</button>
+            <input id='albumTitle' {...register("albumTitle")} placeholder="album title" required></input><br/>
+            <label id='albumTitle-label' htmlFor="albumTitle">Enter the title of the album (required)</label><br/>
+            <input id='url' {...register("url")} placeholder="url" required></input><br/>
+            <label id='url-label' htmlFor="url">Enter the url of the photo (required)</label><br/>
+            <button className='submit-btn' type="submit">Add photo</button>
           </form>
-        </>
+        </div>
       }
     </Modal>
   </div>

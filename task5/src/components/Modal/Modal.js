@@ -1,6 +1,6 @@
 import './modal.css'
 import { useContext } from 'react';
-import dataTypeContext from '../../context/dataTypeContext';
+import dataTypeContext from '../context/dataTypeContext';
 
 function Modal({ active, setActive, children }) {
   return <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>

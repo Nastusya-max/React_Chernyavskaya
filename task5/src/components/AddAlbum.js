@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "./Form/Form";
-import dataTypeContext from "../context/dataTypeContext";
+import dataTypeContext from "./context/dataTypeContext";
 
 function AddAlbum() {
   const [formActive, setformActive] = useState(false);
