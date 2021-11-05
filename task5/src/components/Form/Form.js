@@ -1,11 +1,14 @@
+import './form.css';
 import { useForm } from "react-hook-form";
-import Modal from "./Modal";
+import Modal from "../Modal/Modal";
+import { useContext } from 'react';
+import dataTypeContext from '../../context/dataTypeContext';
 
 import { addNewAlbums } from '../../store/actionCreators/albums';
 import { addNewPhotos } from '../../store/actionCreators/photos';
 import { useDispatch, useSelector } from "react-redux";
 
-function FormAlbum({ active, setActive, dataType }) {
+function Form({ active, setActive }) {
   const addAlbums = useSelector(({ addAlbums }) => addAlbums);
   const fetchAlbums = useSelector(({ fetchAlbums }) => fetchAlbums);
   const addPhotos = useSelector(({ addPhotos }) => addPhotos);
@@ -51,9 +54,8 @@ function FormAlbum({ active, setActive, dataType }) {
 
   return <div>
     <Modal active={active} setActive={setActive}>
-      {dataType === 'album' ?
+      {useContext(dataTypeContext) === 'album' ?
         <>
-          <h3>Title: album</h3>
           <form onSubmit={handleSubmit(onSubmitAlbum)}>
             <label id='title-label' htmlFor="title">Enter the title of the album (required)</label>
             <input id='title' {...register("title")} placeholder="Title" required></input>
@@ -62,7 +64,6 @@ function FormAlbum({ active, setActive, dataType }) {
         </>
         :
         <>
-          <h3>Title: photo</h3>
           <form onSubmit={handleSubmit(onSubmitPhoto)}>
             <input id='albumTitle' {...register("albumTitle")} placeholder="album title" required></input>
             <label id='albumTitle-label' htmlFor="albumTitle">Enter the title of the album (required)</label>
@@ -76,4 +77,4 @@ function FormAlbum({ active, setActive, dataType }) {
   </div>
 }
 
-export default FormAlbum;
+export default Form;

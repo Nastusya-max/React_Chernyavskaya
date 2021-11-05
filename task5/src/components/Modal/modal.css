@@ -23,9 +23,25 @@
   border-radius: 12px;
   background-color: white;
   width: 50vw;
+  justify-content: space-between;
+  flex-direction: column;
+  /* height: 100vh; */
+  display: flex;
 }
 
 .close-modal {
   background-color: tomato;
   color: white;
+}
+
+.btn-holder {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.title-name {
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: 600;
 }
