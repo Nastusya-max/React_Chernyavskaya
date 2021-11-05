@@ -4,6 +4,7 @@ input {
 }
 
 .form-container {
+  margin-top: 15px;
   width: auto;
   display: block;
   margin-left: 50px;
