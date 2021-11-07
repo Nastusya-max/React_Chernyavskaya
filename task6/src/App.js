@@ -1,31 +1,50 @@
 import './App.css';
-import Content from './components/Content';
-import UserInfo from './components/UserInfo';
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./pages/routing/AppRouter";
+import NavBar from './components/NavBar/NavBar';
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { usersFetchDataSuccess } from './store/actionCreators/user';
+import { albumsFetchDataSuccess } from './store/actionCreators/albums';
+import { photosFetchDataSuccess } from './store/actionCreators/photos';
 
-import user from './constants/user.json'
-import { addUser } from './store/actionCreators/user';
-import ScrollButton from './components/ScrollButton/ScrollButton';
-
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
+  function getUsers(src) {
+    return dispatch => {
+      axios.get(src)
+        .then(res => dispatch(usersFetchDataSuccess(res.data)));
+    }
+  }
+
+  function getAlbums(src) {
+    return dispatch => {
+      axios.get(src)
+        .then(res => dispatch(albumsFetchDataSuccess(res.data)));
+    }
+  }
+
+  function getPhotos(src) {
+    return dispatch => {
+      axios.get(src)
+        .then(res => dispatch(photosFetchDataSuccess(res.data)));
+    }
+  }
+  
   useEffect(() => {
-    dispatch(addUser(user));
+    dispatch(getUsers('https://jsonplaceholder.typicode.com/users'));
+    dispatch(getAlbums('https://jsonplaceholder.typicode.com/albums'));
+    dispatch(getPhotos('https://jsonplaceholder.typicode.com/photos'));
   }, [dispatch]);
 
   return (
-    <>
-      <div className="app">
-        <div className="app__container">
-          <UserInfo user={user} />
-          <Content />
-        </div>
-      </div>
-      <ScrollButton />
-    </>
+    <BrowserRouter>
+      <NavBar />
+      <AppRouter />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

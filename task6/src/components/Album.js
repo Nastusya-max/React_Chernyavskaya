@@ -25,7 +25,7 @@ function Album({ album }) {
   }, [activeAlbums, dispatch]);
 
   return <div className='content-container'>
-    {<li key={album.id} >
+    {<li className='li-album' key={album.id} >
       {activeAlbums.filter(item => item.id === album.id).length ?
         <div className='album-container'>
           <Button album={album} />
