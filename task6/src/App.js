@@ -11,7 +11,7 @@ import { photosFetchDataSuccess } from './store/actionCreators/photos';
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const activeUser = useSelector(({ activeUser }) => activeUser);
   function getUsers(src) {
     return dispatch => {
       axios.get(src)
@@ -42,6 +42,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
+      {console.log(activeUser)}
       <AppRouter />
     </BrowserRouter>
   );

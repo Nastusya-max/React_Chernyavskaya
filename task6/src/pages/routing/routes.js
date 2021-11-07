@@ -7,15 +7,15 @@ import App from '../../App'
 export const authRoutes = [
   {
     path: '/user/:userId',
-    Component: <User />
+    component: User
   },
   {
     path: '/user/:userId/albums',
-    Component: <Albums />
+    component: Albums
   },
   {
     path: '/user/:userId/albums/:albumId',
-    Component: <AlbumPage />
+    component: AlbumPage
   },
 ]
 

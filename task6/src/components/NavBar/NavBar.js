@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const NavBar = () => {
   const [btnActive, setBtnActive] = useState(false);
   const [dataType, setDataType] = useState(null);
-  const [isLogin, setIsLogin] = React.useState('false');
+  const [isLogin, setIsLogin] = React.useState(localStorage.getItem('isLogin'));
 
   useEffect(() => {
   }, [isLogin]);
@@ -18,10 +18,10 @@ const NavBar = () => {
         <li className='li'><a href='/' className='a'>Home</a></li>
         <li className='li'><a href='/user/:userId' className='a'>User</a></li>
         <li className='li'><a href='/albums' className='a'>Albums</a></li>
-        <li className='about'> <button className="li-active" onClick={() => { localStorage.setItem('isLogin', 'false'); setIsLogin('false') }}>Logout</button></li>
+        <li className='about'> <button className="li-active" onClick={() => { localStorage.clear() ;localStorage.setItem('isLogin', 'false'); setIsLogin('false') }}>Logout</button></li>
       </ul>
       : <ul className='ul'>
-        <li className='li'><a href='/user/:userId' className='a'>User</a></li>
+        <li className='li'><a href='/' className='a'>Home</a></li>
         <li className='li'><a href='/albums' className='a'>Albums</a></li>
         <li className='about'> <button className="li-active" onClick={() => { setIsLogin('true'); setBtnActive('true'); setDataType('login') }}>Login</button></li>
         <dataTypeContext.Provider value={dataType}>
