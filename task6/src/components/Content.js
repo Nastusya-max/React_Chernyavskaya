@@ -1,16 +1,19 @@
 import Album from "./Album";
 import AddAlbum from "./AddAlbum";
 import { useDispatch, useSelector } from "react-redux";
+import { observer } from 'mobx-react-lite';
+import { Context } from '../index';
+import React, { useContext } from "react";
 
-function Content() {
+const Content = observer(() => {
 
   const addAlbums = useSelector(({ addAlbums }) => addAlbums);
   const fetchAlbums = useSelector(({ fetchAlbums }) => fetchAlbums);
   const dispatch = useDispatch();
+  const { user } = useContext(Context)
 
   return (
-    localStorage.getItem('isLogin') === 'true' ?
-
+    user.isAuth  === 'true' ?
       <div className="user__details">
         <AddAlbum />
         {addAlbums.length ?
@@ -25,6 +28,6 @@ function Content() {
         <ul className='content__component '>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
       </div>
   );
-}
+})
 
 export default Content;

@@ -1,18 +1,23 @@
+import React, { useContext } from "react";
 import '../components/Form/form.css';
 import { useForm } from "react-hook-form";
 import Modal from '../components/Modal/Modal';
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveUser } from '../store/actionCreators/user';
+import { Context } from '../index';
+import {observer} from 'mobx-react-lite'
 
-function Auth({ active, setActive }) {
+const Auth = observer(({ active, setActive }) => {
   const fetchUsers = useSelector(({ fetchUsers }) => fetchUsers);
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const {user} = useContext(Context)
 
   const onSubmitPhoto = (data) => {
     document.querySelector('#albumTitle-label').innerHTML = 'Enter the title of the album (required)';
     if (fetchUsers.filter(item => (item.email === data.email && item.name === data.name)).length) {
       localStorage.setItem('isLogin', 'true');
+      user.setIsAuth(localStorage.getItem('isLogin'))
       const activeUser = fetchUsers.filter(item => (item.email === data.email && item.name === data.name));
       dispatch(setActiveUser(activeUser));
       localStorage.setItem('activeUser', JSON.stringify(activeUser));
@@ -35,6 +40,6 @@ function Auth({ active, setActive }) {
       </div>
     </Modal>
   </div>
-}
+})
 
 export default Auth;

@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import UserInfo from '../components/UserInfo'
-import { useDispatch, useSelector } from "react-redux";
-import store from '../store/store'
+import { observer } from 'mobx-react-lite';
+import { Context } from '../index';
 
-const User = () => {
+const User = observer(() => {
+  const { user } = useContext(Context)
   const activeUser = JSON.parse(localStorage.getItem('activeUser'));
   return (
-      activeUser.length && <div className="app"><div className="app__container"><UserInfo user={activeUser[0]}/></div></div>
-    //  <div>{console.log(activeUser)}</div> 
+    user.isAuth === 'true' ?
+      <div className="app">
+        <div className="app__container">
+          <UserInfo user={activeUser[0]} />
+        </div>
+      </div>
+    : <> </>
   );
-}
+});
 
 export default User;

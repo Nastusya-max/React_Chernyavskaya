@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './NavBar.css';
 import dataTypeContext from "../../context/dataTypeContext";
 import Auth from "../../pages/Auth";
-import { useEffect } from "react";
+import { Context } from "../../index";
+import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = observer(() => {
   const [btnActive, setBtnActive] = useState(false);
   const [dataType, setDataType] = useState(null);
-  const [isLogin, setIsLogin] = React.useState(localStorage.getItem('isLogin'));
+  const { user } = useContext(Context)
 
-  useEffect(() => {
-  }, [isLogin]);
-
-  return (
-    localStorage.getItem('isLogin') === 'true' ?
+  return (<>
+    {user.setIsAuth(localStorage.getItem('isLogin'))}
+    {user.isAuth === 'true' ?
       <ul className='ul'>
-        <li className='li'><a href='/' className='a'>Home</a></li>
-        <li className='li'><a href='/user/:userId' className='a'>User</a></li>
-        <li className='li'><a href='/albums' className='a'>Albums</a></li>
-        <li className='about'> <button className="li-active" onClick={() => { localStorage.clear() ;localStorage.setItem('isLogin', 'false'); setIsLogin('false') }}>Logout</button></li>
+        <li className='li'><Link to='/' className='a'>Home</Link></li>
+        <li className='li'><Link to='/user/:userId' className='a'>User</Link></li>
+        <li className='li'><Link to='/albums' className='a'>Albums</Link></li>
+        <li className='about'> <button className="li-active" onClick={() => { localStorage.clear(); localStorage.setItem('isLogin', 'false'); user.setIsAuth(localStorage.getItem('isLogin')); }}>Logout</button></li>
       </ul>
       : <ul className='ul'>
-        <li className='li'><a href='/' className='a'>Home</a></li>
-        <li className='li'><a href='/albums' className='a'>Albums</a></li>
-        <li className='about'> <button className="li-active" onClick={() => { setIsLogin('true'); setBtnActive('true'); setDataType('login') }}>Login</button></li>
+        <li className='li'><Link to='/' className='a'>Home</Link></li>
+        <li className='li'><Link to='/albums' className='a'>Albums</Link></li>
+        <li className='about'> <button className="li-active" onClick={() => { setBtnActive('true'); setDataType('login') }}>Login</button></li>
         <dataTypeContext.Provider value={dataType}>
           <Auth active={btnActive} setActive={setBtnActive} />
         </dataTypeContext.Provider>
-      </ul>
+      </ul>}
+  </>
   );
-}
+})
 
 export default NavBar;
