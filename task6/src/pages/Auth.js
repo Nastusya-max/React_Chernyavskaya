@@ -14,16 +14,15 @@ const Auth = observer(({ active, setActive }) => {
   const {user} = useContext(Context)
 
   const onSubmitPhoto = (data) => {
-    document.querySelector('#albumTitle-label').innerHTML = 'Enter the title of the album (required)';
+    document.querySelector('.incorrectData').innerHTML = '';
     if (fetchUsers.filter(item => (item.email === data.email && item.name === data.name)).length) {
       localStorage.setItem('isLogin', 'true');
       user.setIsAuth(localStorage.getItem('isLogin'))
       const activeUser = fetchUsers.filter(item => (item.email === data.email && item.name === data.name));
       dispatch(setActiveUser(activeUser));
       localStorage.setItem('activeUser', JSON.stringify(activeUser));
-
     } else {
-      document.querySelector('#albumTitle-label').innerHTML = 'There is no album with that name';
+      document.querySelector('.incorrectData').innerHTML = 'Incorrect user data';
     }
   };
 
@@ -31,10 +30,11 @@ const Auth = observer(({ active, setActive }) => {
     <Modal active={active} setActive={setActive}>
       <div className='form-container'>
         <form onSubmit={handleSubmit(onSubmitPhoto)}>
-          <input id='albumTitle' {...register("email")} placeholder="email" required></input><br />
-          <label id='albumTitle-label' htmlFor="albumTitle">Enter email (required)</label><br />
-          <input id='url' {...register("name")} placeholder="name" required></input><br />
-          <label id='url-label' htmlFor="url">Enter password (required)</label><br />
+          <input id='email' {...register("email")} placeholder="email" required></input><br />
+          <label id='email-label' htmlFor="email">Enter email (required)</label><br />
+          <input id='name' {...register("name")} placeholder="name" required></input><br />
+          <label id='name-label' htmlFor="name">Enter password (required)</label><br />
+          <p className='incorrectData'></p>
           <button className='submit-btn' type="submit">Login</button>
         </form>
       </div>
