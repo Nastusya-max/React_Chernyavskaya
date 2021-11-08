@@ -7,7 +7,6 @@ import { Context } from '../index';
 import { setActiveAlbum } from "../store/actionCreators/albums";
 
 function Album({ album }) {
-  // const content = useSelector(state => state);
   const activeAlbums = useSelector(({ activeAlbums }) => activeAlbums);
   const fetchPhotos = useSelector(({ fetchPhotos }) => fetchPhotos);
   const addAlbums = useSelector(({ addAlbums }) => addAlbums);
@@ -45,7 +44,7 @@ function Album({ album }) {
                 : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
             </div>
           </div>
-          : <div className='title-container'>{console.log(`${history.location.pathname}/${album.id}`)}<Link to={checAuthLink()} className='a'>{album.title}</Link><button className='title' onClick={() => albumClickHandler(album)}>photos</button></div>}
+          : <div className='title-container'><Link to={checAuthLink()} className='a'>{album.title}</Link><button className='title' onClick={() => albumClickHandler(album)}>photos</button></div>}
       </li>}
     </div>
   );

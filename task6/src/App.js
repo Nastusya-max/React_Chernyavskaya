@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./pages/routing/AppRouter";
 import NavBar from './components/NavBar/NavBar';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { usersFetchDataSuccess } from './store/actionCreators/user';
 import { albumsFetchDataSuccess } from './store/actionCreators/albums';
@@ -11,7 +11,7 @@ import { photosFetchDataSuccess } from './store/actionCreators/photos';
 
 const App = () => {
   const dispatch = useDispatch();
-  const activeUser = useSelector(({ activeUser }) => activeUser);
+
   function getUsers(src) {
     return dispatch => {
       axios.get(src)
@@ -32,7 +32,7 @@ const App = () => {
         .then(res => dispatch(photosFetchDataSuccess(res.data)));
     }
   }
-  
+
   useEffect(() => {
     dispatch(getUsers('https://jsonplaceholder.typicode.com/users'));
     dispatch(getAlbums('https://jsonplaceholder.typicode.com/albums'));
@@ -42,7 +42,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
-      {console.log(activeUser)}
       <AppRouter />
     </BrowserRouter>
   );

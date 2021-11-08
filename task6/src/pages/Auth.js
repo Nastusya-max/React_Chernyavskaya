@@ -12,6 +12,9 @@ const Auth = observer(({ active, setActive }) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const {user} = useContext(Context)
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   const onSubmitPhoto = (data) => {
     document.querySelector('.incorrectData').innerHTML = '';
@@ -21,6 +24,7 @@ const Auth = observer(({ active, setActive }) => {
       const activeUser = fetchUsers.filter(item => (item.email === data.email && item.name === data.name));
       dispatch(setActiveUser(activeUser));
       localStorage.setItem('activeUser', JSON.stringify(activeUser));
+      refreshPage();
     } else {
       document.querySelector('.incorrectData').innerHTML = 'Incorrect user data';
     }
