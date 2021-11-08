@@ -23,7 +23,7 @@ const NavBar = observer(() => {
       <ul className='ul'>
         <li className='li'><Link to='/' className='a'>Home</Link></li>
         <li className='li'><Link to={`/user/${activeUser.map((user)=>user.id)}`} className='a'>User</Link></li>
-        <li className='li'><Link to='/albums' className='a'>Albums</Link></li>
+        <li className='li'><Link to={`/user/${activeUser.map((user)=>user.id)}/albums`} className='a'>Albums</Link></li>
         <li className='about'> <button className="li-active" onClick={() => { localStorage.clear(); localStorage.setItem('isLogin', 'false'); user.setIsAuth(localStorage.getItem('isLogin')); refreshPage() }}>Logout</button></li>
       </ul>
       : <ul className='ul'>

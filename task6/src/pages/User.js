@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const User = observer(() => {
   const { userId } = useParams();
-  const { user } = useContext(Context)
+  const { user } = useContext(Context);
   const fetchUsers = useSelector(({ fetchUsers }) => fetchUsers);
   
   return (
