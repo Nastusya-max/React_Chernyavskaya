@@ -11,7 +11,7 @@ body {
 
 .app__container {
   display: inline-block;
-  padding: 0 15px;
+  padding: 15px;
   background-color: #E9633B;
   width: 35%;
 }
@@ -28,6 +28,7 @@ body {
 
 .content__component {
   background-color: #63AA9C;
+  margin: 0;
 }
 
 .inf-container {
@@ -87,7 +88,7 @@ button {
   color: #221E1D;
   padding: 8px 18px;
   font-size: 16px;
-  margin: 0px 7px;
+  margin: 0px 5px 15px;
   background-color: #ECEAE0;
 }
 
@@ -95,7 +96,7 @@ button {
   padding: 5px 10px;
 }
 
-.title-container, button:hover {
+.title, button:hover {
   cursor: pointer;
 }
 p {

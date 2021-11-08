@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Link } from 'react-router-dom';
 import Button from "./Button";
 import Photos from "./Photos";
 
@@ -37,7 +37,7 @@ function Album({ album }) {
               : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
           </div>
         </div>
-        : <div className='title-container' onClick={() => albumClickHandler(album)}>{album.title}</div>}
+        : <div className='title-container'><Link to={`/albums/${album.id}`} className='a'>{album.title}</Link><button className='title' onClick={() => albumClickHandler(album)}>photos</button></div>}
     </li>}
   </div>
 }
