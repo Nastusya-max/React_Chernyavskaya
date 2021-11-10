@@ -29,7 +29,7 @@ const ScrollButton = () => {
 
   return (
     <div>
-      <button  type='button' onClick={scrollToTop} className={isVisable ? 'scrollButton active' : 'scrollButton'}>
+      <button type='button' onClick={scrollToTop} className={isVisable ? 'scrollButton active' : 'scrollButton'}>
         {'\u2191 \u2193'}
       </button>
     </div>

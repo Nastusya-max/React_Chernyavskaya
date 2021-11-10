@@ -12,7 +12,6 @@ function Form({ active, setActive }) {
   const addAlbums = useSelector(({ addAlbums }) => addAlbums);
   const fetchAlbums = useSelector(({ fetchAlbums }) => fetchAlbums);
   const addPhotos = useSelector(({ addPhotos }) => addPhotos);
-  const fetchPhotos = useSelector(({ fetchPhotos }) => fetchPhotos);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
@@ -52,33 +51,32 @@ function Form({ active, setActive }) {
   };
 
   const onSubmitPhoto = (data) => {
-    let userPhotos = []
-    let photos = JSON.parse(localStorage.getItem('userPhotos'))
-    let userAlbums = JSON.parse(localStorage.getItem('userAlbums'))
+    let userPhotos = [];
+    let photos = JSON.parse(localStorage.getItem('userPhotos'));
+    let userAlbums = JSON.parse(localStorage.getItem('userAlbums'));
+
     document.querySelector('#albumTitle-label').innerHTML = 'Enter the title of the album (required)';
     if (userAlbums) {
       if (addPhotos.length) {
-        if (addAlbums.filter(item => item.title === data.albumTitle).length) {
-          data['albumId'] =  addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id)[0];
+        if (userAlbums.filter(item => item.title === data.albumTitle).length) {
+          data['albumId'] = userAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id)[0];
           data['id'] = photos[photos.length - 1].id + 1;
           userPhotos = JSON.parse(localStorage.getItem('userPhotos'))
           userPhotos.push(data)
           localStorage.setItem('userPhotos', JSON.stringify(userPhotos))
           dispatch(addNewPhotos(data));
-          console.log(addPhotos)
         } else {
           document.querySelector('#albumTitle-label').innerHTML = 'You do not have an album with the specified name';
         }
       } else {
-        if (addAlbums.filter(item => item.title === data.albumTitle).length) {
-          data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id)[0];
+        if (userAlbums.filter(item => item.title === data.albumTitle).length) {
+          data['albumId'] = userAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id)[0];
           if (photos) {
             data['id'] = photos[photos.length - 1].id + 1;
             userPhotos = JSON.parse(localStorage.getItem('userPhotos'))
             userPhotos.push(data)
             localStorage.setItem('userPhotos', JSON.stringify(userPhotos))
             dispatch(addNewPhotos(data));
-            console.log(addPhotos)
           } else {
             data['id'] = fetchAlbums.length + 1;
             userPhotos.push(data)

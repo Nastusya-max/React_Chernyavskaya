@@ -6,7 +6,6 @@ import { Context } from '../index';
 import React, { useContext } from "react";
 
 const Content = observer(() => {
-
   const addAlbums = useSelector(({ addAlbums }) => addAlbums);
   const fetchAlbums = useSelector(({ fetchAlbums }) => fetchAlbums);
   const { user } = useContext(Context)
@@ -22,12 +21,15 @@ const Content = observer(() => {
     user.isAuth ?
       <div className="user__details">
         <AddAlbum />
-        {JSON.parse(localStorage.getItem('userAlbums')) ?
-          <>
-          {/* {console.log(JSON.parse(localStorage.getItem('userAlbums')).length)} */}
-            <div><ul className='content__component '><p>Your albums:</p>{userAlbums().length ? userAlbums().map(album => <Album album={album} key={album.id} />) : <Album album={userAlbums()} key={userAlbums().id} />}</ul>
-              <ul className='content__component '>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul></div>
-          </>
+        {(JSON.parse(localStorage.getItem('userAlbums')) || addAlbums.length) ?
+          <div>
+            <ul className='content__component '>
+              <p>Your albums:</p>{userAlbums().length ?
+                userAlbums().map(album => <Album album={album} key={album.id} />)
+                : <Album album={userAlbums()} key={userAlbums().id} />}
+            </ul>
+            <ul className='content__component '>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
+          </div>
           : <ul className='content__component '>{fetchAlbums.map(album => <Album album={album} key={album.id} />)}</ul>
         }
       </div>

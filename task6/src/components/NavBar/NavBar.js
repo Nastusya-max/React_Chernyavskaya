@@ -19,11 +19,11 @@ const NavBar = observer(() => {
   return (<>
     {user.setIsAuth(Boolean(localStorage.getItem('isLogin')))}
     {localStorage.getItem('isLogin') === 'true' ?
-      <ul className='ul'>
-        <li className='li'><Link to='/' className='a'>Home</Link></li>
-        <li className='li'><Link to={`/user/${activeUser.map((user) => user.id)}`} className='a'>User</Link></li>
-        <li className='li'><Link to={`/user/${activeUser.map((user) => user.id)}/albums`} className='a'>Albums</Link></li>
-        <li className='about'> <button className="li-active" onClick={() => {
+      <ul className='ul-menu'>
+        <li className='li-item'><Link to='/' className='link-item'>Home</Link></li>
+        <li className='li-item'><Link to={`/user/${activeUser.map((user) => user.id)}`} className='link-item'>User</Link></li>
+        <li className='li-item'><Link to={`/user/${activeUser.map((user) => user.id)}/albums`} className='link-item'>Albums</Link></li>
+        <li className='about'> <button className="btn-active" onClick={() => {
           localStorage.clear();
           localStorage.setItem('isLogin', '');
           user.setIsAuth(Boolean(localStorage.getItem('isLogin')));
@@ -31,10 +31,10 @@ const NavBar = observer(() => {
         }}>Logout</button>
         </li>
       </ul>
-      : <ul className='ul'>
-        <li className='li'><Link to='/' className='a'>Home</Link></li>
-        <li className='li'><Link to='/albums' className='a'>Albums</Link></li>
-        <li className='about'> <button className="li-active" onClick={() => { setBtnActive('true'); setDataType('login'); }}>Login</button></li>
+      : <ul className='ul-menu'>
+        <li className='li-item'><Link to='/' className='link-item'>Home</Link></li>
+        <li className='li-item'><Link to='/albums' className='link-item'>Albums</Link></li>
+        <li className='about'> <button className="btn-active" onClick={() => { setBtnActive('true'); setDataType('login'); }}>Login</button></li>
         <dataTypeContext.Provider value={dataType}>
           <Auth active={btnActive} setActive={setBtnActive} />
         </dataTypeContext.Provider>

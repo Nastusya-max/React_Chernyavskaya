@@ -1,4 +1,4 @@
-.ul {
+.ul-menu {
   font-family: 'Open sans', sans-serif;
   list-style-type: none;
   margin: 0;
@@ -8,11 +8,11 @@
   margin-bottom: 20px;
 }
 
-.li {
+.li-item {
   float: left;
 }
 
-li a {
+.link-item, .btn-active {
   display: block;
   color: white;
   text-align: center;
@@ -20,15 +20,17 @@ li a {
   text-decoration: none;
 }
 
-li a:hover:not(.li-active) {
+.link-item:hover:not(.btn-active) {
   background-color: #2a6358;
 }
 
-.li-active {
+.btn-active {
+  display: block;
+  text-align: center;
+  border: none;
+  font-size: 18px;
   background-color: #E9633B;
-}
-
-.about {
   float:right;
 }
+
 

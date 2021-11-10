@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import Modal from '../components/Modal/Modal';
 import { useDispatch, useSelector } from "react-redux";
 import { Context } from '../index';
-import {observer} from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite'
 
 const Auth = observer(({ active, setActive }) => {
   const fetchUsers = useSelector(({ fetchUsers }) => fetchUsers);
   const { register, handleSubmit } = useForm();
-  const {user} = useContext(Context)
-  
+  const { user } = useContext(Context)
+
   function refreshPage() {
     window.location.reload(false);
   }

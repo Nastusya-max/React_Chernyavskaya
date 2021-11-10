@@ -57,9 +57,18 @@ img {
   height: 100%
 }
 
-a {
+.album-title {
+  display: block;
+  text-align: center;
+  padding: 10px 16px;
   text-decoration: none;
   color: #221E1D;
+  margin-bottom: 5px;
+}
+
+li .album-title:hover:not(.li-active) {
+  background-color: #2a6358;
+  color: white;
 }
 
 .content-container{
@@ -83,7 +92,7 @@ a {
   margin: 10px;
 }
 
-button {
+.close-button, .btn-photos, .add-button, .submit-btn, .close-modal {
   border-color: #a6b2cc;
   color: #221E1D;
   padding: 8px 18px;
@@ -92,20 +101,13 @@ button {
   background-color: #ECEAE0;
 }
 
-.close-button {
-  padding: 5px 10px;
-}
-
 .title, button:hover {
   cursor: pointer;
 }
+
 p {
   font-size: 24px;
   color: #ECEAE0;
   margin: 0;
   padding: 0;
-}
-
-.addAlbum-container {
-  margin-top: 15px;
 }

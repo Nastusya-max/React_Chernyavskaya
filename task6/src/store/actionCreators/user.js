@@ -1,5 +1,5 @@
 import { ADD_USER_TYPE } from "../actions/user";
-import { USERS_FETCH_DATA_SUCCESS }  from "../actions/user";
+import { USERS_FETCH_DATA_SUCCESS } from "../actions/user";
 import { ACTIVE_USER } from "../actions/user";
 
 export function addUser(user) {

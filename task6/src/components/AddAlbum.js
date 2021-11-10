@@ -7,8 +7,8 @@ function AddAlbum() {
   const [dataType, setDataType] = useState(null);
 
   return <div className='addAlbum-container'>
-    <button onClick={() => { setformActive(true); setDataType('album') }}>Add album</button>
-    <button onClick={() => { setformActive(true); setDataType('photo') }}>Add photo</button>
+    <button className='add-button' onClick={() => { setformActive(true); setDataType('album') }}>Add album</button>
+    <button className='add-button' onClick={() => { setformActive(true); setDataType('photo') }}>Add photo</button>
     <dataTypeContext.Provider value={dataType}>
       <Form active={formActive} setActive={setformActive} />
     </dataTypeContext.Provider>

@@ -9,8 +9,6 @@ import { setActiveAlbum } from "../store/actionCreators/albums";
 function Album({ album }) {
   const activeAlbums = useSelector(({ activeAlbums }) => activeAlbums);
   const fetchPhotos = useSelector(({ fetchPhotos }) => fetchPhotos);
-  const addAlbums = useSelector(({ addAlbums }) => addAlbums);
-  const addPhotos = useSelector(({ addPhotos }) => addPhotos);
   const history = useHistory();
   const dispatch = useDispatch();
   const { user } = useContext(Context);
@@ -39,20 +37,16 @@ function Album({ album }) {
             <Button album={album} />
             <div className='img-container'>
               {(albums && albums.filter(item => item.id === album.id).length) ?
-                // console.log(photos)
-                photos ?
-                  photos.filter(item => +item.albumId === album.id).length ?
-                    photos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
-                    : 'Please, add a photo lbum'
-                  : 'Please, add a photo to the album'
-                // : photos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
+                (photos && photos.filter(item => +item.albumId === album.id).length) ?
+                  photos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
+                  : 'Please, add a photo to album'
                 : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
               }
             </div>
           </div>
           : <div className='title-container'>
-            <Link to={checAuthLink()} className='a'>{album.title}</Link>
-            <button className='title' onClick={() => albumClickHandler(album)}>photos</button>
+            <Link to={checAuthLink()} className='album-title'>{album.title}</Link>
+            <button className='btn-photos' onClick={() => albumClickHandler(album)}>photos</button>
           </div>
         }
       </li>}
