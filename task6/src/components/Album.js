@@ -26,7 +26,7 @@ function Album({ album }) {
 
   const checAuthLink = () => {
     let link = '';
-    user.isAuth === 'true' ? link = `${history.location.pathname}/${album.id}` : link = `/albums/${album.id}`
+    user.isAuth ? link = `${history.location.pathname}/${album.id}` : link = `/albums/${album.id}`
     return link;
   }
 
@@ -44,7 +44,11 @@ function Album({ album }) {
                 : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
             </div>
           </div>
-          : <div className='title-container'><Link to={checAuthLink()} className='a'>{album.title}</Link><button className='title' onClick={() => albumClickHandler(album)}>photos</button></div>}
+          : <div className='title-container'>
+            <Link to={checAuthLink()} className='a'>{album.title}</Link>
+            <button className='title' onClick={() => albumClickHandler(album)}>photos</button>
+          </div>
+        }
       </li>}
     </div>
   );

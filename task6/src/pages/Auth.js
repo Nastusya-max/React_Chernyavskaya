@@ -3,15 +3,14 @@ import '../components/Form/form.css';
 import { useForm } from "react-hook-form";
 import Modal from '../components/Modal/Modal';
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveUser } from '../store/actionCreators/user';
 import { Context } from '../index';
 import {observer} from 'mobx-react-lite'
 
 const Auth = observer(({ active, setActive }) => {
   const fetchUsers = useSelector(({ fetchUsers }) => fetchUsers);
   const { register, handleSubmit } = useForm();
-  const dispatch = useDispatch();
   const {user} = useContext(Context)
+  
   function refreshPage() {
     window.location.reload(false);
   }
@@ -20,9 +19,8 @@ const Auth = observer(({ active, setActive }) => {
     document.querySelector('.incorrectData').innerHTML = '';
     if (fetchUsers.filter(item => (item.email === data.email && item.name === data.name)).length) {
       localStorage.setItem('isLogin', 'true');
-      user.setIsAuth(localStorage.getItem('isLogin'))
+      user.setIsAuth(Boolean(localStorage.getItem('isLogin')));
       const activeUser = fetchUsers.filter(item => (item.email === data.email && item.name === data.name));
-      dispatch(setActiveUser(activeUser));
       localStorage.setItem('activeUser', JSON.stringify(activeUser));
       refreshPage();
     } else {

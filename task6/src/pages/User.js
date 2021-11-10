@@ -11,7 +11,7 @@ const User = observer(() => {
   const fetchUsers = useSelector(({ fetchUsers }) => fetchUsers);
 
   return (
-    user.isAuth === 'true' &&
+    user.isAuth &&
     <div className="app">
       <div className="app__container">
         {fetchUsers.filter(user => user.id === +userId).map((user) => <UserInfo key={user.id} user={user} />)}

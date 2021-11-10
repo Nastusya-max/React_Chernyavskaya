@@ -19,16 +19,36 @@ function Form({ active, setActive }) {
   const onSubmitAlbum = (data) => {
     document.querySelector('#title-label').innerHTML = 'Enter the title of the album (required)';
     data['userId'] = 1;
+    let userAlbums = []
     if (addAlbums.length) {
+      console.log(addAlbums)
       if (addAlbums.filter(item => item.title === data.title).length) {
         document.querySelector('#title-label').innerHTML = 'Album with the same name already exists';
       } else {
         data['id'] = addAlbums[addAlbums.length - 1].id + 1;
+        userAlbums = JSON.parse(localStorage.getItem('userAlbums'))
+        userAlbums.push(data)
+        localStorage.setItem('userAlbums', JSON.stringify(userAlbums))
         dispatch(addNewAlbums(data));
       }
     } else {
-      data['id'] = fetchAlbums.length + 1;
-      dispatch(addNewAlbums(data));
+      let albums = JSON.parse(localStorage.getItem('userAlbums'))
+      if (albums) {
+        if (albums.filter(item => item.title === data.title).length) {
+          document.querySelector('#title-label').innerHTML = 'Album with the same name already exists';
+        } else {
+          data['id'] = albums[albums.length - 1].id + 1;
+          userAlbums = JSON.parse(localStorage.getItem('userAlbums'))
+          userAlbums.push(data)
+          localStorage.setItem('userAlbums', JSON.stringify(userAlbums))
+          dispatch(addNewAlbums(data));
+        }
+      } else {
+        data['id'] = fetchAlbums.length + 1;
+        userAlbums.push(data)
+        localStorage.setItem('userAlbums', JSON.stringify([data]));
+        dispatch(addNewAlbums(data));
+      }
     }
   };
 

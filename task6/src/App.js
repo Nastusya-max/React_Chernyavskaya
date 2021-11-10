@@ -12,31 +12,17 @@ import { photosFetchDataSuccess } from './store/actionCreators/photos';
 const App = () => {
   const dispatch = useDispatch();
 
-  function getUsers(src) {
+  const getData = (src, actionCreator) => {
     return dispatch => {
       axios.get(src)
-        .then(res => dispatch(usersFetchDataSuccess(res.data)));
-    }
-  }
-
-  function getAlbums(src) {
-    return dispatch => {
-      axios.get(src)
-        .then(res => dispatch(albumsFetchDataSuccess(res.data)));
-    }
-  }
-
-  function getPhotos(src) {
-    return dispatch => {
-      axios.get(src)
-        .then(res => dispatch(photosFetchDataSuccess(res.data)));
+        .then(res => dispatch(actionCreator(res.data)));
     }
   }
 
   useEffect(() => {
-    dispatch(getUsers('https://jsonplaceholder.typicode.com/users'));
-    dispatch(getAlbums('https://jsonplaceholder.typicode.com/albums'));
-    dispatch(getPhotos('https://jsonplaceholder.typicode.com/photos'));
+    dispatch(getData('https://jsonplaceholder.typicode.com/users', usersFetchDataSuccess));
+    dispatch(getData('https://jsonplaceholder.typicode.com/albums', albumsFetchDataSuccess));
+    dispatch(getData('https://jsonplaceholder.typicode.com/photos', photosFetchDataSuccess));
   }, [dispatch]);
 
   return (
