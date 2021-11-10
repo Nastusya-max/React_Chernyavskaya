@@ -21,7 +21,7 @@ function Form({ active, setActive }) {
     data['userId'] = 1;
     let userAlbums = []
     if (addAlbums.length) {
-      console.log(addAlbums)
+      // console.log(addAlbums)
       if (addAlbums.filter(item => item.title === data.title).length) {
         document.querySelector('#title-label').innerHTML = 'Album with the same name already exists';
       } else {
@@ -53,22 +53,41 @@ function Form({ active, setActive }) {
   };
 
   const onSubmitPhoto = (data) => {
+    let userPhotos = []
+    let photos = JSON.parse(localStorage.getItem('userPhotos'))
+    let userAlbums = JSON.parse(localStorage.getItem('userAlbums'))
     document.querySelector('#albumTitle-label').innerHTML = 'Enter the title of the album (required)';
-    if (addAlbums.length) {
+    if (userAlbums) {
       if (addPhotos.length) {
-        data['id'] = addPhotos[addPhotos.length - 1].id + 1
+        if (addAlbums.filter(item => item.title === data.albumTitle).length) {
+          data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id);
+          data['id'] = photos[photos.length - 1].id + 1;
+          userPhotos = JSON.parse(localStorage.getItem('userPhotos'))
+          userPhotos.push(data)
+          localStorage.setItem('userPhotos', JSON.stringify(userPhotos))
+          dispatch(addNewPhotos(data));
+          console.log(addPhotos)
+        }
       } else {
-        data['id'] = fetchPhotos.length + 1;
-      }
-
-      if (addAlbums.filter(item => item.title === data.albumTitle).length) {
-        data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id);
-        dispatch(addNewPhotos(data));
-      } else {
-        document.querySelector('#albumTitle-label').innerHTML = 'There is no album with that name';
+        if (addAlbums.filter(item => item.title === data.albumTitle).length) {
+          data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id);
+          if (photos) {
+            data['id'] = photos[photos.length - 1].id + 1;
+            userPhotos = JSON.parse(localStorage.getItem('userPhotos'))
+            userPhotos.push(data)
+            localStorage.setItem('userPhotos', JSON.stringify(userPhotos))
+            dispatch(addNewPhotos(data));
+            console.log(addPhotos)
+          } else {
+            data['id'] = fetchAlbums.length + 1;
+            userPhotos.push(data)
+            localStorage.setItem('userPhotos', JSON.stringify([data]));
+            dispatch(addNewPhotos(data));
+          }
+        }
       }
     } else {
-      document.querySelector('#albumTitle-label').innerHTML = 'There is no album with that name';
+      console.log('addPhotos')
     }
   };
 

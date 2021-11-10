@@ -29,7 +29,8 @@ function Album({ album }) {
     user.isAuth ? link = `${history.location.pathname}/${album.id}` : link = `/albums/${album.id}`
     return link;
   }
-
+  let albums = JSON.parse(localStorage.getItem('userAlbums'))
+  let photos = JSON.parse(localStorage.getItem('userPhotos'))
   return (
     <div className='content-container'>
       {<li className='li-album' key={album.id} >
@@ -37,9 +38,10 @@ function Album({ album }) {
           <div className='album-container'>
             <Button album={album} />
             <div className='img-container'>
-              {addAlbums.filter(item => item.id === album.id).length ?
-                addPhotos.filter(item => +item.albumId === album.id).length ?
-                  addPhotos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
+              {albums.filter(item => item.id === album.id).length ?
+                // console.log(photos)
+                photos.filter(item => +item.albumId === album.id).length ?
+                  photos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
                   : 'Please, add a photo to the album'
                 : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
             </div>
