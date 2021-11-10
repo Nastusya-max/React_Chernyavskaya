@@ -11,7 +11,7 @@ const AlbumPage = () => {
     <div className="app__container">
       <div className="user__details">
         <ul className='content__component '>
-          {albums.length && albums.filter(item => item.id === +albumId).length ?
+          {albums && albums.filter(item => item.id === +albumId).length ?
             albums.filter(item => item.id === +albumId).map((album) => <Album key={album.id} album={album} />)
             : fetchAlbums.length && fetchAlbums.filter(item => item.id === +albumId).map((album) => <Album key={album.id} album={album} />)
           }

@@ -21,7 +21,6 @@ function Form({ active, setActive }) {
     data['userId'] = 1;
     let userAlbums = []
     if (addAlbums.length) {
-      // console.log(addAlbums)
       if (addAlbums.filter(item => item.title === data.title).length) {
         document.querySelector('#title-label').innerHTML = 'Album with the same name already exists';
       } else {
@@ -60,17 +59,19 @@ function Form({ active, setActive }) {
     if (userAlbums) {
       if (addPhotos.length) {
         if (addAlbums.filter(item => item.title === data.albumTitle).length) {
-          data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id);
+          data['albumId'] =  addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id)[0];
           data['id'] = photos[photos.length - 1].id + 1;
           userPhotos = JSON.parse(localStorage.getItem('userPhotos'))
           userPhotos.push(data)
           localStorage.setItem('userPhotos', JSON.stringify(userPhotos))
           dispatch(addNewPhotos(data));
           console.log(addPhotos)
+        } else {
+          document.querySelector('#albumTitle-label').innerHTML = 'You do not have an album with the specified name';
         }
       } else {
         if (addAlbums.filter(item => item.title === data.albumTitle).length) {
-          data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id);
+          data['albumId'] = addAlbums.filter(item => item.title === data.albumTitle).map(albim => albim.id)[0];
           if (photos) {
             data['id'] = photos[photos.length - 1].id + 1;
             userPhotos = JSON.parse(localStorage.getItem('userPhotos'))
@@ -84,10 +85,12 @@ function Form({ active, setActive }) {
             localStorage.setItem('userPhotos', JSON.stringify([data]));
             dispatch(addNewPhotos(data));
           }
+        } else {
+          document.querySelector('#albumTitle-label').innerHTML = 'You do not have an album with the specified name';
         }
       }
     } else {
-      console.log('addPhotos')
+      document.querySelector('#albumTitle-label').innerHTML = 'You do not have an album with the specified name';
     }
   };
 

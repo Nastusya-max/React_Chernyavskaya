@@ -38,12 +38,16 @@ function Album({ album }) {
           <div className='album-container'>
             <Button album={album} />
             <div className='img-container'>
-              {albums.filter(item => item.id === album.id).length ?
+              {(albums && albums.filter(item => item.id === album.id).length) ?
                 // console.log(photos)
-                photos.filter(item => +item.albumId === album.id).length ?
-                  photos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
+                photos ?
+                  photos.filter(item => +item.albumId === album.id).length ?
+                    photos.filter(item => +item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
+                    : 'Please, add a photo lbum'
                   : 'Please, add a photo to the album'
-                : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
+                // : photos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)}
+                : fetchPhotos.filter(item => item.albumId === album.id).map(photo => <Photos photo={photo} key={photo.id} />)
+              }
             </div>
           </div>
           : <div className='title-container'>
