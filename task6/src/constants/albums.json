@@ -1,0 +1,17 @@
+[
+  {
+    "userId": 11,
+    "id": 101,
+    "title": "New album №1"
+  },
+  {
+    "userId": 12,
+    "id": 102,
+    "title": "New album №2"
+  },
+  {
+    "userId": 13,
+    "id": 103,
+    "title": "New album №3"
+  }
+]

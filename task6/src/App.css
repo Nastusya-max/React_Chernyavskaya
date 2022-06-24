@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  text-align: center;
+  color: #221E1D;
+  font-family: 'Open sans', sans-serif;
+}
+
+.app__container {
+  display: inline-block;
+  padding: 15px;
+  background-color: #E9633B;
+  width: 35%;
+}
+
+.avatar__component {
+  width: 40%;
+}
+
+.user-details__component {
+  text-align: left;
+  background-color: #ECEAE0;
+  width: 60%;
+}
+
+.content__component {
+  background-color: #63AA9C;
+  margin: 0;
+}
+
+.inf-container {
+  display:flex;
+}
+
+.text {
+  display:inline-block;
+  padding: 5px;
+}
+
+.li-album {
+  padding: 10px;
+  margin: 12px;
+  background-color: #ECEAE0;
+}
+
+.content__component {
+  list-style: none;
+  padding-left: 0;
+  padding: 8px;
+}
+
+img {
+  width: 100%;
+  height: 100%
+}
+
+.album-title {
+  display: block;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #221E1D;
+  margin-bottom: 5px;
+}
+
+li .album-title:hover:not(.li-active) {
+  background-color: #2a6358;
+  color: white;
+}
+
+.content-container{
+  width: 100%;
+  text-align: center;
+}
+
+.album-img {
+  width: 100px;
+  padding: 5px;
+}
+
+.img-container {
+  width: 100%;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.album-container {
+  padding-top: 10px;
+  margin: 10px;
+}
+
+.close-button, .btn-photos, .add-button, .submit-btn, .close-modal {
+  border-color: #a6b2cc;
+  color: #221E1D;
+  padding: 8px 18px;
+  font-size: 16px;
+  margin: 0px 5px 15px;
+  background-color: #ECEAE0;
+}
+
+.title, button:hover {
+  cursor: pointer;
+}
+
+p {
+  font-size: 24px;
+  color: #ECEAE0;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,36 @@
+.ul-menu {
+  font-family: 'Open sans', sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #63AA9C;
+  margin-bottom: 20px;
+}
+
+.li-item {
+  float: left;
+}
+
+.link-item, .btn-active {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.link-item:hover:not(.btn-active) {
+  background-color: #2a6358;
+}
+
+.btn-active {
+  display: block;
+  text-align: center;
+  border: none;
+  font-size: 18px;
+  background-color: #E9633B;
+  float:right;
+}
+
+

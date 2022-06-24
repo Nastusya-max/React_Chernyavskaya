@@ -1,0 +1,13 @@
+.scrollButton{
+   position: fixed;
+   top: 50px;
+   right: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+}
+
+.scrollButton.active{
+   opacity: 1;
+}
